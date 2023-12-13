@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+</head>
+<body>
+    <h1>Witaj w {{ app_name }}.</h1>
+    <a href="{% url 'login' %}"><button>Zaloguj</button></a>
+    <a href="{% url 'create_user' %}"><button>Utwórz konto</button></a>
+    <a href="{% url 'about' %}"><button>O Aplikacji</button></a>
+
+    <footer>
+        <p>Version {{ version.version_number }} | {{ version.release_date }}</p>
+        <p>Data i czas: {{ current_date }}</p>
+    </footer>
+</body>
+</html>

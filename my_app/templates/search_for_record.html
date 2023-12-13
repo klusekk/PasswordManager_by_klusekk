@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search for Record</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for Record</h1>
+
+    <form method="get" action="{% url 'search_for_record' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Wyszukaj rekord (minimum 3 znaki)" required>
+        <select name="category">
+            <option value="" {% if not category %}selected{% endif %}>Wszystkie kategorie</option>
+            <option value="kategoria1" {% if category == 'kategoria1' %}selected{% endif %}>Kategoria 1</option>
+            <option value="kategoria2" {% if category == 'kategoria2' %}selected{% endif %}>Kategoria 2</option>
+            <!-- Dodaj więcej kategorii, jeśli są dostępne -->
+        </select>
+        <button type="submit">Szukaj</button>
+    </form>
+
+    {% if records %}
+        <table>
+            <tr>
+                <th>Login</th>
+                <th>Kategoria</th>
+                <th>Akcje</th>
+            </tr>
+            {% for record in records %}
+                <tr>
+                    <td>{{ record.login }}</td>
+                    <td>{{ record.category }}</td>
+                    <td>
+                        <a href="{% url 'show_password' record.id %}">Pokaż hasło</a>
+                        <a href="{% url 'edit_login' record.id %}">Edytuj login</a>
+                        <a href="{% url 'edit_password' record.id %}">Edytuj hasło</a>
+                        <a href="{% url 'delete_record' record.id %}" onclick="return confirm('Czy na pewno usunąć rekord? Zmiany są nieodwracalne!')">Usuń rekord</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Brak pasujących rekordów.</p>
+    {% endif %}
+
+    <a href="{% url 'dashboard' %}"><button>Powrót</button></a>
+</body>
+</html>

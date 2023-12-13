@@ -1,0 +1,48 @@
+<!-- templates/gen_pass.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Wygeneruj swoje hasło{% endblock %}</title>
+    <style>
+        /* Dodany styl dla przerwy między polem a przyciskami */
+        #buttonContainer {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wygeneruj swoje hasło</h1>
+    <form method="post" id="generatePasswordForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div id="generatedPasswordDiv" style="display: {% if request.session.generated_password %}block{% else %}none{% endif %};">
+            <label for="id_generated_password">Wygenerowane hasło:</label>
+            <input type="text" id="id_generated_password" value="{{ request.session.generated_password }}" readonly>
+        </div>
+
+        <!-- Przerwa między polem a przyciskami -->
+        <div id="buttonContainer">
+            <button type="button" onclick="generatePassword()">Wygeneruj hasło</button>
+            <button type="button" onclick="copyToClipboard()">Kopiuj do schowka</button>
+        </div>
+    </form>
+
+    <script>
+        function generatePassword() {
+            document.getElementById('generatePasswordForm').submit();
+        }
+
+        function copyToClipboard() {
+            var generatedPassword = document.getElementById('id_generated_password');
+            generatedPassword.select();
+            document.execCommand('copy');
+            alert('Hasło skopiowane do schowka: ' + generatedPassword.value);
+        }
+    </script>
+
+    <a href="{% url 'home' %}"><button>Powrót</button></a>
+</body>
+</html>

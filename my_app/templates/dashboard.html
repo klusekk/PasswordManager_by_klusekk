@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+   <ul>
+        <a href="{% url 'add_record' %}">Dodaj record</a>
+        <a href="{% url 'search_for_record' %}">Wyszukiwarka rekordów</a>
+        <a href="{% url 'change_data' %}">Edycja Konta</a>
+        <a href="{% url 'logout' %}">Wyloguj</a>
+   </ul>
+</body>
+</html>

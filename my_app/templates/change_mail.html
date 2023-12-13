@@ -1,0 +1,20 @@
+<!-- templates/change_mail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmiana emaila</title>
+</head>
+<body>
+    <h1>Zmiana emaila</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Zatwierdź</button>
+    </form>
+
+    <a href="{% url 'change_data' %}"><button>Powrót</button></a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- templates/change_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmiana danych</title>
+</head>
+<body>
+    <h1>Zmiana danych</h1>
+    <ul><!-- Dodaj linki do innych stron zmiany danych -->
+        <a href="{% url 'change_pass' %}">Zmiana hasła</a><br>
+        <a href="{% url 'change_mail' %}">Zmiana emaila</a><br>
+        <a href="{% url 'change_dob' %}">Zmiana daty urodzenia</a><br>
+        <a href="{% url 'acc_delete' %}">Usuń konto</a>
+    </ul>
+
+    <a href="{% url 'dashboard' %}"><button>Powrót</button></a>
+</body>
+</html>
