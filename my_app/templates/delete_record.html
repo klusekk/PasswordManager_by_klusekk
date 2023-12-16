@@ -9,18 +9,15 @@
     <p>Czy na pewno chcesz usunąć rekord o loginie: <strong>{{ record.login }}</strong>? Zmiany są nieodwracalne!</p>
 
     <form method="post" action="{% url 'delete_record' record.id %}">
-        {% csrf_token %}
-        <label>
-            Potwierdź usunięcie rekordu:
-            <select name="confirm_delete" required>
-                <option value="">Wybierz</option>
-                <option value="Tak">Tak</option>
-                <option value="Nie">Nie</option>
-            </select>
-        </label>
-        <button type="submit">Usuń</button>
-    </form>
+    {% csrf_token %}
+    <input type="hidden" name="confirm_delete" value="Yes">
+    <button type="submit">Usuń</button>
+</form>
 
     <a href="{% url 'search_for_record' %}"><button>Powrót</button></a>
+
+    <footer>
+       <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
+    </footer>
 </body>
 </html>

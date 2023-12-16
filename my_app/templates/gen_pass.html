@@ -43,6 +43,10 @@
         }
     </script>
 
-    <a href="{% url 'home' %}"><button>Powrót</button></a>
+    <a href="{% url 'add_record' %}"><button>Powrót</button></a>
+
+    <footer>
+       <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
+    </footer>
 </body>
 </html>

@@ -15,5 +15,8 @@
     </form>
     <a href="{% url 'dashboard' %}"><button type="button">Powrót</button></a>
 
+    <footer>
+       <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
+    </footer>
 </body>
 </html>

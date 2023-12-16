@@ -11,5 +11,7 @@
         <a href="{% url 'change_data' %}">Edycja Konta</a>
         <a href="{% url 'logout' %}">Wyloguj</a>
    </ul>
+
+    <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
 </body>
 </html>

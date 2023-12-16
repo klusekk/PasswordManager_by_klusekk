@@ -14,5 +14,9 @@
         <button type="submit">Zapisz</button>
     </form>
     {% include '_back_button.html' %}
+
+    <footer>
+       <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
+    </footer>
 </body>
 </html>

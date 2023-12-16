@@ -42,7 +42,7 @@
             </tr>
             {% for record in records %}
                 <tr>
-                    <td>{{ record.login }}</td>
+                    <td>{{ record.page_name }}</td>
                     <td>{{ record.category }}</td>
                     <td>
                         <a href="{% url 'show_password' record.id %}">Pokaż hasło</a>
@@ -58,5 +58,9 @@
     {% endif %}
 
     <a href="{% url 'dashboard' %}"><button>Powrót</button></a>
+
+    <footer>
+       <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
+    </footer>
 </body>
 </html>

@@ -16,5 +16,7 @@
     </form>
 
     <a href="{% url 'change_data' %}"><button>Powrót</button></a>
+
+    <p>Wersja aplikacji: {{ app_version.version_number }}, Data wydania: {{ app_version.release_date }}</p>
 </body>
 </html>
